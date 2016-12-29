@@ -2,14 +2,14 @@
 %{!?python33_sitearch: %global python33_sitearch %(%{__python33} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           python33-postgresql
-Version:        1.1.0
+Version:        1.2.1
 Release:        1.ius%{?dist}
 Summary:        Connect to PostgreSQL with Python 3
 
 Group:          Applications/Databases
 License:        BSD
 URL:            http://python.projects.postgresql.org/
-Source0:        http://pypi.python.org/packages/source/p/py-postgresql/py-postgresql-%{version}.zip
+Source0:        https://pypi.io/packages/source/p/py-postgresql/py-postgresql-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  python33-devel
@@ -31,7 +31,7 @@ CFLAGS="$RPM_OPT_FLAGS" %{__python33} setup.py build
 rm -rf $RPM_BUILD_ROOT
 %{__python33} setup.py install -O1 --skip-build --root $RPM_BUILD_ROOT
 
- 
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -43,6 +43,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Dec 29 2016 Ben Harper <ben.harper@rackspace.com> - 1.2.1-1.ius
+- Latest upstream
+- update Source0 URL
+
 * Tue Oct 16 2012 Ben Harper <ben.harper@rackspace.com> - 1.1.0-1.ius
 - Porting from python32-postgresql
 
