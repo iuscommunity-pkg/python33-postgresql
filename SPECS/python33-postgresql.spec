@@ -1,9 +1,9 @@
 %global __python33 /usr/bin/python3.3
-%{!?python33_sitearch: %global python33_sitearch %(%{__python33} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
+%{!?python33_sitearch: %global python33_sitearch %(%{__python33} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 
 Name:           python33-postgresql
 Version:        1.2.1
-Release:        1.ius%{?dist}
+Release:        2.ius%{?dist}
 Summary:        Connect to PostgreSQL with Python 3
 
 Group:          Applications/Databases
@@ -43,6 +43,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jan 03 2017 Ben Harper <ben.harper@rackspace.com> - 1.2.1-2.ius
+- update python33_sitearch macro
+
 * Thu Dec 29 2016 Ben Harper <ben.harper@rackspace.com> - 1.2.1-1.ius
 - Latest upstream
 - update Source0 URL
